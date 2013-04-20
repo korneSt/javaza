@@ -5,8 +5,8 @@ import com.google.common.base.Strings;
 
 public class OperationFactory {
 
-    private static final String OPERATION_CONCAT = "concat";
-    private static final String OPERATION_SUBSTRING = "substring";
+    public static final String OPERATION_CONCAT = "concat";
+    public static final String OPERATION_SUBSTRING = "substring";
     private static final int OPERATION_NAME_ID = 0;
     private static final int MIN_ARG_SIZE = 3;
 
@@ -25,7 +25,7 @@ public class OperationFactory {
     }
 
     private static Operation createOperation(String operationName, String[] args) {
-        if (Strings.isNullOrEmpty(operationName)) {
+        if (Strings.isNullOrEmpty(operationName)) { //Guava
             throw new IllegalStateException("Operation name can't be null");
         }
         if (OPERATION_SUBSTRING.equalsIgnoreCase(operationName)) {

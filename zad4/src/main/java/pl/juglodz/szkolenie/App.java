@@ -1,13 +1,17 @@
 
 package pl.juglodz.szkolenie;
 
-import pl.juglodz.szkolenie.logger.ConsoleLogger;
-import pl.juglodz.szkolenie.logger.FileLogger;
+import java.util.List;
+
+import pl.juglodz.szkolenie.logger.ConsolePersonLogger;
+import pl.juglodz.szkolenie.logger.FilePersonLogger;
 import pl.juglodz.szkolenie.logger.PersonsLogger;
-import pl.juglodz.szkolenie.logger.SimpleXmlLogger;
-import pl.juglodz.szkolenie.logger.XmlLogger;
+import pl.juglodz.szkolenie.logger.SimpleXmlPersonLogger;
+import pl.juglodz.szkolenie.logger.XmlPersonLogger;
 import pl.juglodz.szkolenie.person.Person;
 import pl.juglodz.szkolenie.person.PersonGenerator;
+import pl.juglodz.szkolenie.reader.PersonReader;
+import pl.juglodz.szkolenie.reader.SimpleXmlPersonReader;
 
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
@@ -33,38 +37,40 @@ public class App {
         App app = new App().generatePersons();//.displayPersons();
         args = new String[] {XML2_FILE};
         PersonsLogger personLoger = app.getLogger(args);
+        PersonReader pr = new SimpleXmlPersonReader();
         try {
             personLoger.write();
+            ImmutableList<Person> list = pr.read();
+            displayPersons(list);
         } catch (Exception e) {
-            System.out.println("Application can't write persons" + e.getMessage());
+            System.out.println(e);
             e.printStackTrace();
         }
         System.out.println("Done");
     }
 
     private PersonsLogger getLogger(String[] args) {
-        PersonsLogger personLoger = new ConsoleLogger(persons);
+        PersonsLogger personLoger = new ConsolePersonLogger(persons);
         if (args==null || args.length < 1 || Strings.isNullOrEmpty(args[0])){
             return personLoger; 
         }
         String loggerType = args[0];
         if (TXT_FILE.equals(loggerType)){
-            personLoger  = new FileLogger(persons);
+            personLoger  = new FilePersonLogger(persons);
         }else if (XML_FILE.equals(loggerType)){
-            personLoger = new XmlLogger(persons);
+            personLoger = new XmlPersonLogger(persons);
         }else if (XML2_FILE.equals(loggerType)){
-            personLoger = new SimpleXmlLogger(persons);
+            personLoger = new SimpleXmlPersonLogger(persons);
         }
         return personLoger;
     }
 
-    private App displayPersons() {
+    private static void displayPersons(List<Person> persons) {
         for (Person person : persons) {
             System.out.println(person);
         }
         // persons.remove(1);
         // persons.add(new Person("Mariusz", "Saramak")); //Because persons is immutable I can't add
         // or remove
-        return this;
     }
 }

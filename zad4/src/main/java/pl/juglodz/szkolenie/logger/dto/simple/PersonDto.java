@@ -5,15 +5,18 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
 import pl.juglodz.szkolenie.person.Person;
-@Root(name="person")
+
+@Root(name = "person")
 public class PersonDto {
 
     @Element
     private String name;
-    
+
     @Element
     private String surname;
-    
+
+    public PersonDto() {
+    }
 
     private PersonDto(Person person) {
         this.name = person.getName();
@@ -32,5 +35,4 @@ public class PersonDto {
         return name;
     }
 
-    
 }

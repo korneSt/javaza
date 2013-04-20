@@ -24,5 +24,8 @@ public class PersonsDto {
             list.add(PersonDto.valueOf(person));
         }
     }
+    public List<PersonDto> getList() {
+        return list;
+    }
 
 }

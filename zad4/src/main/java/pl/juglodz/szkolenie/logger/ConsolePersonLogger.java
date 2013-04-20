@@ -5,11 +5,11 @@ import com.google.common.collect.ImmutableList;
 
 import pl.juglodz.szkolenie.person.Person;
 
-public class ConsoleLogger implements PersonsLogger {
+public class ConsolePersonLogger implements PersonsLogger {
 
     private final ImmutableList<Person> persons;
 
-    public ConsoleLogger(ImmutableList<Person> persons) {
+    public ConsolePersonLogger(ImmutableList<Person> persons) {
         this.persons = persons;
     }
 

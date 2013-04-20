@@ -12,12 +12,12 @@ import pl.juglodz.szkolenie.person.Person;
 
 import com.google.common.collect.ImmutableList;
 
-public class SimpleXmlLogger implements PersonsLogger {
+public class SimpleXmlPersonLogger implements PersonsLogger {
 
     private static final String TARGET_PERSONS_XML = "target/persons2.xml";
     private final ImmutableList<Person> persons;
 
-    public SimpleXmlLogger(ImmutableList<Person> persons) {
+    public SimpleXmlPersonLogger(ImmutableList<Person> persons) {
         this.persons = persons;
     }
 

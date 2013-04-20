@@ -9,12 +9,12 @@ import pl.juglodz.szkolenie.person.Person;
 
 import com.google.common.collect.ImmutableList;
 
-public class FileLogger implements PersonsLogger {
+public class FilePersonLogger implements PersonsLogger {
 
     private static final String PERSONS_FILE_NAME = "target/persons.txt";
     private final ImmutableList<Person> persons;
 
-    public FileLogger(ImmutableList<Person> persons) {
+    public FilePersonLogger(ImmutableList<Person> persons) {
         this.persons = persons;
     }
 

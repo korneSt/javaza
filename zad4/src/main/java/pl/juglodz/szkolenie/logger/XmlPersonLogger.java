@@ -19,7 +19,7 @@ import pl.juglodz.szkolenie.person.Person;
 
 import com.google.common.collect.ImmutableList;
 
-public class XmlLogger implements PersonsLogger {
+public class XmlPersonLogger implements PersonsLogger {
 
     private static final String TARGET_PERSONS_XML = "target/persons.xml";
     private static final String XML_TAG_PERSONS = "persons";
@@ -29,7 +29,7 @@ public class XmlLogger implements PersonsLogger {
     private final ImmutableList<Person> persons;
     private Document doc;
 
-    public XmlLogger(ImmutableList<Person> persons) {
+    public XmlPersonLogger(ImmutableList<Person> persons) {
         this.persons = persons;
     }
 

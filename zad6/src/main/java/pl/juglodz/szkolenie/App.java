@@ -1,8 +1,14 @@
 
 package pl.juglodz.szkolenie;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 import pl.juglodz.szkolenie.localization.Budynek;
 import pl.juglodz.szkolenie.localization.Identyfikator;
+import pl.juglodz.szkolenie.localization.Lokalizacja;
 import pl.juglodz.szkolenie.localization.Pietro;
 import pl.juglodz.szkolenie.localization.Pokoj;
 
@@ -18,7 +24,7 @@ import pl.juglodz.szkolenie.localization.Pokoj;
  * napisz metody sprawdzajace relacje pomiedzy dwoma dowolnymi lokalizacjami.
  */
 public class App {
-    public static void main(String[] args) {
+    public static <T> void main(String[] args) {
         Budynek a = new Budynek(1);
         Pietro pietro1 = new Pietro(1);
         Pokoj pokoj1 = new Pokoj(1);
@@ -36,6 +42,18 @@ public class App {
         a.addPietro(pietro4);
         Budynek b = new Budynek(2);
         System.out.println(a.opis());
+        List<Lokalizacja> list = new ArrayList<Lokalizacja>();
+        list.add(a);
+        list.add(b);
+        Collections.sort(list, new Comparator<Lokalizacja>() {
+
+            @Override
+            public int compare(Lokalizacja o1, Lokalizacja o2) {
+                return o1.getID().compareTo(o2.getID());
+            }
+
+        });
+        System.out.println(list);
         
     }
 }

@@ -35,4 +35,10 @@ public class Budynek extends Lokalizacja {
         return numer;
     }
 
+    @Override
+    public String toString() {
+        return "Bud " + numer + " ";
+    }
+   
+
 }

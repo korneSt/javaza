@@ -25,6 +25,7 @@ public class ReadFile implements Runnable {
 	
 	@Override
 	public void run() {
+	    System.out.println(Thread.currentThread().getName() + "started ");
 		int lineNr = 0;
 		try {
 			while ((line = br.readLine()) != null) {
@@ -34,7 +35,7 @@ public class ReadFile implements Runnable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		//System.out.println("W pliku " + this.file.getAbsolutePath() + " jest linie " + lineNr);
+		System.out.println("W pliku " + this.file.getAbsolutePath() + " jest linie " + lineNr + "");
 	}
 
 }

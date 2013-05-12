@@ -1,10 +1,15 @@
 package pl.juglodz;
 
+import java.util.List;
+
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 
-public class MessageDisplayerPanel extends JPanel {
+import pl.juglodz.model.Model;
+import pl.juglodz.model.ModelListener;
+
+public class MessageDisplayerPanel extends JPanel implements ModelListener{
 
     private JList messegeList;
     private DefaultListModel listModel; 
@@ -18,8 +23,14 @@ public class MessageDisplayerPanel extends JPanel {
         
         messegeList.setModel(listModel);
     }
-    public void addMessgage(String message) {
-        listModel.addElement(message);
+    
+    @Override
+    public void modelChanged(Model model) {
+        List<String> modelApplikacji = model.getMessages(); 
+        listModel.clear();
+        for (String wiadomosc : modelApplikacji) {
+            listModel.addElement(wiadomosc);
+        }
     }
     
 }

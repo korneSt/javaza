@@ -25,6 +25,8 @@ public class ApplicationWindow extends JFrame  {
         messageDisplayPanel = new MessageDisplayerPanel();
         writeMessagePannel = new WriteMessagePannel(appController);
 
+        appController.registerModelListener(messageDisplayPanel);
+        appController.registerModelListener(writeMessagePannel);
         
         add(messageDisplayPanel, BorderLayout.CENTER);
         add(writeMessagePannel, BorderLayout.SOUTH);

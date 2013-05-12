@@ -9,9 +9,11 @@ import javax.swing.JTextField;
 
 import pl.juglodz.MessageDisplayerPanel;
 import pl.juglodz.contoller.ApplicationController;
+import pl.juglodz.model.Model;
+import pl.juglodz.model.ModelListener;
 
 
-public class WriteMessagePannel extends JPanel implements ActionListener {
+public class WriteMessagePannel extends JPanel implements ActionListener, ModelListener {
     private static final int TEXTFIELD_SIZE = 40;
     private static final String SEND_BUTTON_LABEL = "Send";
     JTextField messageTextField;
@@ -36,6 +38,14 @@ public class WriteMessagePannel extends JPanel implements ActionListener {
         messageTextField.setText("");
         System.out.println(message);
         controller.messege(message);
+    }
+
+
+    @Override
+    public void modelChanged(Model model) {
+        if (model.getMessages().size()>4){
+            okButton.setEnabled(false);
+        }
     }
 
 }

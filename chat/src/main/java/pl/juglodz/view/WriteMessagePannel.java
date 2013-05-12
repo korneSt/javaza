@@ -43,9 +43,6 @@ public class WriteMessagePannel extends JPanel implements ActionListener, ModelL
 
     @Override
     public void modelChanged(Model model) {
-        if (model.getMessages().size()>4){
-            okButton.setEnabled(false);
-        }
     }
 
 }

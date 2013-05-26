@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class NewNoteActivity extends Activity implements OnClickListener {
 	
@@ -15,6 +16,8 @@ public class NewNoteActivity extends Activity implements OnClickListener {
 	private Button zapiszButton;
 	private ZapisywaczNotatek zapisywacz;
 
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -23,6 +26,7 @@ public class NewNoteActivity extends Activity implements OnClickListener {
 		notataET = (EditText) findViewById(R.id.notatka_edit_text);
 		zapiszButton = (Button) findViewById(R.id.zapisz_button);
 		zapiszButton.setOnClickListener(this);
+		zapisywacz = new SDCardZapisywaczNotatek(getApplicationContext());
 	}
 
 	@Override
@@ -34,6 +38,11 @@ public class NewNoteActivity extends Activity implements OnClickListener {
 		notatka.setTitle(tytul);
 		notatka.setTresc(tresc);
 		notatka.setOstatniaZmiana(time);
+		try {
+			zapisywacz.zapisz(notatka);
+		} catch (ZapisException e) {
+			Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+		}
 		
 	}
 

@@ -11,11 +11,16 @@ import org.apache.http.HttpException;
 
 public class MyHttpManger implements HttpManager {
 
+	private UpdateProgressCallback progress;
+
 	@Override
-	public String load(String urlt) throws HttpException {
+	public String load(String urlt, UpdateProgressCallback progress) throws HttpException {
+		this.progress = progress;
 		try {
 			URL url = new URL(urlt);
+			progress.onProgress(20);
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			progress.onProgress(25);
 			return readStream(con.getInputStream());
 		} catch (Exception e) {
 			throw new HttpException("error when download webside", e);
@@ -27,10 +32,16 @@ public class MyHttpManger implements HttpManager {
 		try {
 			reader = new BufferedReader(new InputStreamReader(in));
 			String line = "";
+			String strona = "";
+			int i = 25;
 			while ((line = reader.readLine()) != null) {
-				line += line;
+				progress.onProgress(++i);
+				if (i>75){
+					i = 25;
+				}
+				strona += line;
 			}
-			return line;
+			return strona;
 		} catch (IOException e) {
 			throw e;
 		} finally {

@@ -37,5 +37,13 @@
         android:layout_marginTop="19dp" >
     </ListView>
 
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/nowaNotatkaButton"
+        android:layout_below="@+id/nowaNotatkaButton"
+        android:layout_marginLeft="95dp" />
 
 </RelativeLayout>

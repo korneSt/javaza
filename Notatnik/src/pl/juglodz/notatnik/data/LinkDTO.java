@@ -11,6 +11,12 @@ public class LinkDTO {
 		return alt;
 	}
 	
+	public void setAlt(String alt) {
+		this.alt = alt;
+	}
+	public void setLink(Uri link) {
+		this.link = link;
+	}
 	
 	
 }

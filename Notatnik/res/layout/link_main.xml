@@ -16,6 +16,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/nowaNotatkaButton"
         android:ems="10"
+        android:text="http://www.wp.pl"
         android:inputType="textUri" />
 
     <Button

@@ -18,7 +18,7 @@ public class SDCardZapisywaczNotatek implements ZapisywaczNotatek {
 
 	public SDCardZapisywaczNotatek(Context context) {
 		 extStore = Environment.getExternalStorageDirectory();
-		 file = new File(extStore.getAbsolutePath() + File.pathSeparator + NOTATKA_FILE_NAME);
+		 file = new File(extStore.getAbsolutePath() + File.separator + NOTATKA_FILE_NAME);
 	}
 	
 	@Override
@@ -27,8 +27,11 @@ public class SDCardZapisywaczNotatek implements ZapisywaczNotatek {
 			throw new ZapisException("Sdcard is not avaliable");
 		}
 		try {
+			if (!file.exists()){
+				file.createNewFile();
+			}
 			FileWriter pw = new FileWriter(file);
-			pw.append( notatka.getOstatniaZmiana() +"|" + notatka.getTitle() + "|" + notatka.getTresc());
+			pw.append(notatka.getOstatniaZmiana() +"|" + notatka.getTitle() + "|" + notatka.getTresc());
 			pw.flush();
 			pw.close();
 		} catch (IOException e) {

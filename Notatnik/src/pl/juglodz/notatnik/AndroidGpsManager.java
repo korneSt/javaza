@@ -2,7 +2,6 @@ package pl.juglodz.notatnik;
 
 import android.content.Context;
 import android.location.Criteria;
-import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 

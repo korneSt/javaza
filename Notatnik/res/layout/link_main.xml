@@ -7,6 +7,16 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
+    
+    <EditText
+        android:id="@+id/link_editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/nowaNotatkaButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/nowaNotatkaButton"
+        android:ems="10"
+        android:inputType="textUri" />
 
     <Button
         android:id="@+id/nowaNotatkaButton"
@@ -14,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/link_editText"
         android:text="@string/start" />
 
     <ListView
@@ -25,5 +35,6 @@
         android:layout_below="@+id/nowaNotatkaButton"
         android:layout_marginTop="19dp" >
     </ListView>
+
 
 </RelativeLayout>
